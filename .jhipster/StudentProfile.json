@@ -1,0 +1,93 @@
+{
+    "name": "StudentProfile",
+    "fields": [
+        {
+            "fieldName": "dream",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "birthDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "bloodGroup",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "immunizationRecords",
+            "otherEntityName": "immunizationRecord",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "illnessRecords",
+            "otherEntityName": "illnessRecord",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "payments",
+            "otherEntityName": "payment",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "kudosRecords",
+            "otherEntityName": "kudosRecord",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "milestoneRecords",
+            "otherEntityName": "milestoneRecord",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attendance",
+            "otherEntityName": "attendance",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "incidents",
+            "otherEntityName": "incident",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "timelines",
+            "otherEntityName": "timeline",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "parents",
+            "otherEntityName": "parent",
+            "otherEntityRelationshipName": "studentProfile"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "galleryItems",
+            "otherEntityName": "gallery",
+            "otherEntityRelationshipName": "studentProfile"
+        }
+    ],
+    "changelogDate": "20180817091605",
+    "entityTableName": "student_profile",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

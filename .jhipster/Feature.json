@@ -1,0 +1,31 @@
+{
+    "name": "Feature",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "featureType",
+            "fieldType": "FeatureType",
+            "fieldValues": "STANDARD,PREMIUM"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "parent",
+            "otherEntityName": "parent",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180817091620",
+    "entityTableName": "feature",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

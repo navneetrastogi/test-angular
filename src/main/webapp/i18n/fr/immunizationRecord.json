@@ -1,0 +1,26 @@
+
+{
+    "testangularApp": {
+        "immunizationRecord" : {
+            "home": {
+                "title": "ImmunizationRecords",
+                "createLabel": "Créer un nouveau Immunization Record",
+                "createOrEditLabel": "Créer ou éditer un Immunization Record"
+            },
+            "created": "Un nouveau Immunization Record a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Immunization Record avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Immunization Record avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Immunization Record {{ id }} ?"
+            },
+            "detail": {
+                "title": "Immunization Record"
+            },
+            "createdOn": "Created On",
+            "vaccinationDoneOn": "Vaccination Done On",
+            "vaccinationName": "Vaccination Name",
+            "isOnTime": "Is On Time",
+            "studentProfile": "Student Profile"
+        }
+    }
+}

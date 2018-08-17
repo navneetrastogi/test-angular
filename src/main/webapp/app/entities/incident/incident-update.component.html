@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-incident-heading" jhiTranslate="testangularApp.incident.home.createOrEditLabel">Create or edit a Incident</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!incident.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="incident.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.natureOfIncident" for="field_natureOfIncident">Nature Of Incident</label>
+                    <input type="text" class="form-control" name="natureOfIncident" id="field_natureOfIncident"
+                        [(ngModel)]="incident.natureOfIncident" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.firstAidProvided" for="field_firstAidProvided">First Aid Provided</label>
+                    <input type="checkbox" class="form-control" name="firstAidProvided" id="field_firstAidProvided"
+                        [(ngModel)]="incident.firstAidProvided" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.firstAidNotes" for="field_firstAidNotes">First Aid Notes</label>
+                    <input type="text" class="form-control" name="firstAidNotes" id="field_firstAidNotes"
+                        [(ngModel)]="incident.firstAidNotes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="incident.date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="incident.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.isAdminOnly" for="field_isAdminOnly">Is Admin Only</label>
+                    <input type="checkbox" class="form-control" name="isAdminOnly" id="field_isAdminOnly"
+                        [(ngModel)]="incident.isAdminOnly" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.notes" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="field_notes"
+                        [(ngModel)]="incident.notes" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.incident.studentProfile" for="field_studentProfile">Student Profile</label>
+                    <select class="form-control" id="field_studentProfile" name="studentProfile" [(ngModel)]="incident.studentProfile" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="studentProfileOption.id === incident.studentProfile?.id ? incident.studentProfile : studentProfileOption" *ngFor="let studentProfileOption of studentprofiles; trackBy: trackStudentProfileById">{{studentProfileOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
