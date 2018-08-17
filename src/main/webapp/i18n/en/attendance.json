@@ -1,0 +1,25 @@
+
+{
+    "testangularApp": {
+        "attendance" : {
+            "home": {
+                "title": "Attendances",
+                "createLabel": "Create a new Attendance",
+                "createOrEditLabel": "Create or edit a Attendance"
+            },
+            "created": "A new Attendance is created with identifier {{ param }}",
+            "updated": "A Attendance is updated with identifier {{ param }}",
+            "deleted": "A Attendance is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Attendance {{ id }}?"
+            },
+            "detail": {
+                "title": "Attendance"
+            },
+            "attendanceEvent": "Attendance Event",
+            "datetime": "Datetime",
+            "createdOn": "Created On",
+            "studentProfile": "Student Profile"
+        }
+    }
+}

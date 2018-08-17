@@ -1,0 +1,9 @@
+{
+    "testangularApp": {
+        "AttendanceEvent" : {
+            "null": "",
+            "CHECKIN": "CHECKIN",
+            "CHECKOUT": "CHECKOUT"
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{
+    "name": "Attendance",
+    "fields": [
+        {
+            "fieldName": "attendanceEvent",
+            "fieldType": "AttendanceEvent",
+            "fieldValues": "CHECKIN,CHECKOUT"
+        },
+        {
+            "fieldName": "datetime",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "studentProfile",
+            "otherEntityName": "studentProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180817091415",
+    "entityTableName": "attendance",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
