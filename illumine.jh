@@ -1,0 +1,324 @@
+entity Organization {
+	id Long,
+    name String,
+    createdOn LocalDate,
+    lastModifiedOn LocalDate
+}
+
+entity Center {
+	id Long,
+    name String,
+    createdOn LocalDate,
+    lastModifiedOn LocalDate
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	Organization{centers} to Center
+    Center{rooms} to Room
+    Schedule{rooms} to Room
+    Center{teachers} to Teacher
+    Center{students} to Student
+    Center{holidays} to Holiday
+}
+
+entity Room {
+	id Long,
+    name String,
+    capacity Long
+    createdOn LocalDate
+    lastModifiedOn LocalDate
+}
+
+entity Schedule {
+	id Long,
+    events Long,
+	activities Long,
+    createdOn LocalDate
+    lastModifiedOn LocalDate
+}
+
+relationship OneToMany {
+	Schedule{events} to Event
+    Schedule{activities} to Activity
+}
+
+entity Event {
+	id Long,
+	title String,
+	description String
+    eventImageURL String
+    eventDate LocalDate
+    createdOn LocalDate
+    lastModifiedOn LocalDate
+}
+
+entity Activity {
+	id Long,
+	title String,
+	description String,
+    activityImageUrl String
+    activityDate LocalDate
+    createdOn LocalDate
+    lastModifiedOn LocalDate
+}
+
+entity ActivityType {
+    id Long,
+    name String,
+    category String
+}
+entity Photo {
+	id Long,
+    activityId Long,
+    eventId Long,
+    date LocalDate
+}
+
+relationship OneToMany{
+    Activity{photos} to Photo
+    Event{photos} to Photo
+    Activity{videos} to Video
+    Event{videos} to Video
+}
+
+relationship OneToOne{
+    Activity{activityType} to ActivityType
+}
+entity Video {
+	id Long,
+    uploadedDate LocalDate,
+    url String
+}
+entity Student{
+    id Long,
+    name String
+    createdOn LocalDate
+    lastModifiedOn LocalDate
+}
+
+entity StudentProfile{
+  id Long,
+  dream String,
+  birthDate LocalDate,
+  bloodGroup String
+  gender Gender  
+}
+
+enum Gender {
+  MALE,FEMALE
+}
+relationship OneToOne{
+  Student{id} to StudentProfile
+ 
+}
+relationship OneToMany{
+  StudentProfile{immunizationRecords} to ImmunizationRecord
+  StudentProfile{illnessRecords} to IllnessRecord
+  StudentProfile{payments} to Payment
+  StudentProfile{kudosRecords} to KudosRecord
+  StudentProfile{milestoneRecords} to MilestoneRecord
+  StudentProfile{attendance} to Attendance
+  StudentProfile{incidents} to Incident
+  StudentProfile{timelines} to Timeline
+  StudentProfile{parents} to Parent
+  StudentProfile{galleryItems} to Gallery
+  Milestone{milestoneRecords} to MilestoneRecord
+  Kudos{kudosRecords} to KudosRecord
+
+}
+entity Teacher {
+  id Long,
+  name String,
+  contactNumber String,
+  gender Gender
+  address String
+  createdOn LocalDate
+  joiningDate LocalDate
+}
+
+
+entity Holiday {
+    id Long,
+    date LocalDate,
+    title String,
+    description String
+}
+
+entity Kudos{
+    id Long,
+	title String,
+	description String,
+    imageUrl String
+    createdOn LocalDate
+    lastModifiedOn LocalDate
+}
+entity KudosRecord{
+	id Long
+    createdOn LocalDate
+    notes String
+}
+
+entity Milestone{
+    id Long,
+	title String,
+	description String,
+    imageUrl String
+    createdOn LocalDate
+    lastModifiedOn LocalDate
+}
+entity MilestoneRecord{
+	id Long
+    createdOn LocalDate
+    notes String
+}
+entity Incident{
+	id Long
+    natureOfIncident String
+    firstAidProvided Boolean
+    firstAidNotes String
+    date LocalDate
+    createdOn LocalDate
+    isAdminOnly Boolean
+    notes String
+}
+entity Gallery{
+	id Long,
+    mediaType MediaType
+    createdOn LocalDate
+    fileUrl String
+    title String
+}
+enum MediaType{
+	PHOTO,VIDEO
+}
+entity Payment{
+id Long
+}
+entity ImmunizationRecord{
+	id Long
+    createdOn LocalDate
+    vaccinationDoneOn LocalDate
+    vaccinationName String
+    isOnTime Boolean
+}
+entity IllnessRecord{
+	id Long
+    createdOn LocalDate
+    name String
+    description String
+    isCured Boolean
+}
+enum AttendanceEvent {CHECKIN, CHECKOUT}
+
+entity Attendance{
+	id Long
+    attendanceEvent AttendanceEvent
+    datetime LocalDate    
+    createdOn LocalDate    
+}
+
+enum Relation{
+	FATHER, MOTHER, GUARDIAN
+}
+entity Parent{
+	id Long,
+    name String,
+    createdOn LocalDate,
+    phoneNumber String,
+    relation Relation,
+    studentName String,
+    isAccountActive Boolean,
+    email String    
+}
+
+relationship OneToMany{
+    Parent{features} to Feature
+    Parent{notifications} to Notification
+    Parent{tasks} to Task
+    Parent{permissions} to Permission
+    Parent{conversation} to Conversation
+}
+entity Permission{
+	id Long
+    name String
+}
+entity Feature{
+	id Long
+    name String
+    featureType FeatureType
+}
+enum FeatureType{
+	STANDARD,PREMIUM
+}
+entity Notification{
+	id Long
+	type String
+    date LocalDate
+    createdOn LocalDate
+    message String
+    icon String
+    status NotificationStatus
+}
+enum NotificationStatus{
+	PENDING,DELIVERED,READ
+}
+entity Task{
+	id Long
+    title String
+    notes String
+    startDate LocalDate
+    endDate LocalDate
+    reminderType ReminderType
+}
+
+enum ReminderType {
+	HOURLY,DAILY,WEEKLY,MONTHLY
+}
+entity TaskType{
+    id Long
+    name String
+    priority Integer
+}
+entity Conversation{
+    id Long
+    text String
+    createdOn LocalDate
+    sentOn LocalDate
+    status String
+    fileUrl String
+    mediaType MediaType
+}
+entity  Timeline {
+	id Long
+    date LocalDate,
+    isVisible LocalDate
+}
+relationship OneToMany{
+Teacher{conversation} to Conversation
+Parent{conversation} to Conversation
+Room{students} to Student
+Incident{students} to Student
+Schedule{timelines} to Timeline
+TaskType{tasks} to Task
+Room{tasks} to Task
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
