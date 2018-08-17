@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-timeline-heading" jhiTranslate="testangularApp.timeline.home.createOrEditLabel">Create or edit a Timeline</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!timeline.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="timeline.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.timeline.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="timeline.date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.timeline.isVisible" for="field_isVisible">Is Visible</label>
+                    <div class="input-group">
+                        <input id="field_isVisible" type="text" class="form-control" name="isVisible" ngbDatepicker  #isVisibleDp="ngbDatepicker" [(ngModel)]="timeline.isVisible"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="isVisibleDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.timeline.schedule" for="field_schedule">Schedule</label>
+                    <select class="form-control" id="field_schedule" name="schedule" [(ngModel)]="timeline.schedule" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="scheduleOption.id === timeline.schedule?.id ? timeline.schedule : scheduleOption" *ngFor="let scheduleOption of schedules; trackBy: trackScheduleById">{{scheduleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.timeline.studentProfile" for="field_studentProfile">Student Profile</label>
+                    <select class="form-control" id="field_studentProfile" name="studentProfile" [(ngModel)]="timeline.studentProfile" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="studentProfileOption.id === timeline.studentProfile?.id ? timeline.studentProfile : studentProfileOption" *ngFor="let studentProfileOption of studentprofiles; trackBy: trackStudentProfileById">{{studentProfileOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="immunizationRecord">
+            <h2><span jhiTranslate="testangularApp.immunizationRecord.detail.title">Immunization Record</span> {{immunizationRecord.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.immunizationRecord.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{immunizationRecord.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.immunizationRecord.vaccinationDoneOn">Vaccination Done On</span></dt>
+                <dd>
+                    <span>{{immunizationRecord.vaccinationDoneOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.immunizationRecord.vaccinationName">Vaccination Name</span></dt>
+                <dd>
+                    <span>{{immunizationRecord.vaccinationName}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.immunizationRecord.isOnTime">Is On Time</span></dt>
+                <dd>
+                    <span>{{immunizationRecord.isOnTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.immunizationRecord.studentProfile">Student Profile</span></dt>
+                <dd>
+                    <div *ngIf="immunizationRecord.studentProfile">
+                        <a [routerLink]="['/student-profile', immunizationRecord.studentProfile?.id, 'view']">{{immunizationRecord.studentProfile?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/immunization-record', immunizationRecord.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

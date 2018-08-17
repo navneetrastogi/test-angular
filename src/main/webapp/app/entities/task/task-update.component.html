@@ -1,0 +1,84 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-task-heading" jhiTranslate="testangularApp.task.home.createOrEditLabel">Create or edit a Task</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!task.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="task.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="task.title" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.notes" for="field_notes">Notes</label>
+                    <input type="text" class="form-control" name="notes" id="field_notes"
+                        [(ngModel)]="task.notes" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.startDate" for="field_startDate">Start Date</label>
+                    <div class="input-group">
+                        <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="task.startDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.endDate" for="field_endDate">End Date</label>
+                    <div class="input-group">
+                        <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="task.endDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="endDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.reminderType" for="field_reminderType">Reminder Type</label>
+                    <select class="form-control" name="reminderType" [(ngModel)]="task.reminderType" id="field_reminderType" >
+                        <option value="HOURLY">{{'testangularApp.ReminderType.HOURLY' | translate}}</option>
+                        <option value="DAILY">{{'testangularApp.ReminderType.DAILY' | translate}}</option>
+                        <option value="WEEKLY">{{'testangularApp.ReminderType.WEEKLY' | translate}}</option>
+                        <option value="MONTHLY">{{'testangularApp.ReminderType.MONTHLY' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.room" for="field_room">Room</label>
+                    <select class="form-control" id="field_room" name="room" [(ngModel)]="task.room" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="roomOption.id === task.room?.id ? task.room : roomOption" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.parent" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="task.parent" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parentOption.id === task.parent?.id ? task.parent : parentOption" *ngFor="let parentOption of parents; trackBy: trackParentById">{{parentOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.task.taskType" for="field_taskType">Task Type</label>
+                    <select class="form-control" id="field_taskType" name="taskType" [(ngModel)]="task.taskType" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="taskTypeOption.id === task.taskType?.id ? task.taskType : taskTypeOption" *ngFor="let taskTypeOption of tasktypes; trackBy: trackTaskTypeById">{{taskTypeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

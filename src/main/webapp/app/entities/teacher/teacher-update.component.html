@@ -1,0 +1,73 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-teacher-heading" jhiTranslate="testangularApp.teacher.home.createOrEditLabel">Create or edit a Teacher</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!teacher.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="teacher.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.teacher.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="teacher.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.teacher.contactNumber" for="field_contactNumber">Contact Number</label>
+                    <input type="text" class="form-control" name="contactNumber" id="field_contactNumber"
+                        [(ngModel)]="teacher.contactNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.teacher.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" [(ngModel)]="teacher.gender" id="field_gender" >
+                        <option value="MALE">{{'testangularApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'testangularApp.Gender.FEMALE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.teacher.address" for="field_address">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                        [(ngModel)]="teacher.address" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.teacher.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="teacher.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.teacher.joiningDate" for="field_joiningDate">Joining Date</label>
+                    <div class="input-group">
+                        <input id="field_joiningDate" type="text" class="form-control" name="joiningDate" ngbDatepicker  #joiningDateDp="ngbDatepicker" [(ngModel)]="teacher.joiningDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="joiningDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.teacher.center" for="field_center">Center</label>
+                    <select class="form-control" id="field_center" name="center" [(ngModel)]="teacher.center" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="centerOption.id === teacher.center?.id ? teacher.center : centerOption" *ngFor="let centerOption of centers; trackBy: trackCenterById">{{centerOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

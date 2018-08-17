@@ -1,0 +1,34 @@
+
+{
+    "testangularApp": {
+        "parent" : {
+            "home": {
+                "title": "Parents",
+                "createLabel": "Create a new Parent",
+                "createOrEditLabel": "Create or edit a Parent"
+            },
+            "created": "A new Parent is created with identifier {{ param }}",
+            "updated": "A Parent is updated with identifier {{ param }}",
+            "deleted": "A Parent is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Parent {{ id }}?"
+            },
+            "detail": {
+                "title": "Parent"
+            },
+            "name": "Name",
+            "createdOn": "Created On",
+            "phoneNumber": "Phone Number",
+            "relation": "Relation",
+            "studentName": "Student Name",
+            "isAccountActive": "Is Account Active",
+            "email": "Email",
+            "studentProfile": "Student Profile",
+            "features": "Features",
+            "notifications": "Notifications",
+            "tasks": "Tasks",
+            "permissions": "Permissions",
+            "conversation": "Conversation"
+        }
+    }
+}

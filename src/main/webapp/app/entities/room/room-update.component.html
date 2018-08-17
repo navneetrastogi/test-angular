@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-room-heading" jhiTranslate="testangularApp.room.home.createOrEditLabel">Create or edit a Room</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!room.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="room.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.room.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="room.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.room.capacity" for="field_capacity">Capacity</label>
+                    <input type="number" class="form-control" name="capacity" id="field_capacity"
+                        [(ngModel)]="room.capacity" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.room.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="room.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.room.lastModifiedOn" for="field_lastModifiedOn">Last Modified On</label>
+                    <div class="input-group">
+                        <input id="field_lastModifiedOn" type="text" class="form-control" name="lastModifiedOn" ngbDatepicker  #lastModifiedOnDp="ngbDatepicker" [(ngModel)]="room.lastModifiedOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastModifiedOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.room.center" for="field_center">Center</label>
+                    <select class="form-control" id="field_center" name="center" [(ngModel)]="room.center" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="centerOption.id === room.center?.id ? room.center : centerOption" *ngFor="let centerOption of centers; trackBy: trackCenterById">{{centerOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.room.schedule" for="field_schedule">Schedule</label>
+                    <select class="form-control" id="field_schedule" name="schedule" [(ngModel)]="room.schedule" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="scheduleOption.id === room.schedule?.id ? room.schedule : scheduleOption" *ngFor="let scheduleOption of schedules; trackBy: trackScheduleById">{{scheduleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
