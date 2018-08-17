@@ -1,0 +1,11 @@
+{
+    "testangularApp": {
+        "ReminderType" : {
+            "null": "",
+            "HOURLY": "HOURLY",
+            "DAILY": "DAILY",
+            "WEEKLY": "WEEKLY",
+            "MONTHLY": "MONTHLY"
+        }
+    }
+}

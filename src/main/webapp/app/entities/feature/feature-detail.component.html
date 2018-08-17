@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="feature">
+            <h2><span jhiTranslate="testangularApp.feature.detail.title">Feature</span> {{feature.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.feature.name">Name</span></dt>
+                <dd>
+                    <span>{{feature.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.feature.featureType">Feature Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'testangularApp.FeatureType.' + feature.featureType}}">{{feature.featureType}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.feature.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="feature.parent">
+                        <a [routerLink]="['/parent', feature.parent?.id, 'view']">{{feature.parent?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/feature', feature.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

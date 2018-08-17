@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="testangularApp.attendance.home.title">Attendances</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-attendance" [routerLink]="['/attendance/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="testangularApp.attendance.home.createLabel">
+            Create new Attendance
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="attendances">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="testangularApp.attendance.attendanceEvent">Attendance Event</span></th>
+            <th><span jhiTranslate="testangularApp.attendance.datetime">Datetime</span></th>
+            <th><span jhiTranslate="testangularApp.attendance.createdOn">Created On</span></th>
+            <th><span jhiTranslate="testangularApp.attendance.studentProfile">Student Profile</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let attendance of attendances ;trackBy: trackId">
+                <td><a [routerLink]="['/attendance', attendance.id, 'view' ]">{{attendance.id}}</a></td>
+                <td jhiTranslate="{{'testangularApp.AttendanceEvent.' + attendance.attendanceEvent}}">{{attendance.attendanceEvent}}</td>
+                <td>{{attendance.datetime | date:'mediumDate'}}</td>
+                <td>{{attendance.createdOn | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="attendance.studentProfile">
+                        <a [routerLink]="['../student-profile', attendance.studentProfile?.id, 'view' ]" >{{attendance.studentProfile?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/attendance', attendance.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/attendance', attendance.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'attendance/'+ attendance.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
