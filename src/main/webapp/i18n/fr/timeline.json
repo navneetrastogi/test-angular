@@ -1,0 +1,25 @@
+
+{
+    "testangularApp": {
+        "timeline" : {
+            "home": {
+                "title": "Timelines",
+                "createLabel": "Créer un nouveau Timeline",
+                "createOrEditLabel": "Créer ou éditer un Timeline"
+            },
+            "created": "Un nouveau Timeline a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Timeline avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Timeline avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Timeline {{ id }} ?"
+            },
+            "detail": {
+                "title": "Timeline"
+            },
+            "date": "Date",
+            "isVisible": "Is Visible",
+            "schedule": "Schedule",
+            "studentProfile": "Student Profile"
+        }
+    }
+}

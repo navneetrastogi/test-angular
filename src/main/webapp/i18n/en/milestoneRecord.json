@@ -1,0 +1,25 @@
+
+{
+    "testangularApp": {
+        "milestoneRecord" : {
+            "home": {
+                "title": "Milestone Records",
+                "createLabel": "Create a new Milestone Record",
+                "createOrEditLabel": "Create or edit a Milestone Record"
+            },
+            "created": "A new Milestone Record is created with identifier {{ param }}",
+            "updated": "A Milestone Record is updated with identifier {{ param }}",
+            "deleted": "A Milestone Record is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Milestone Record {{ id }}?"
+            },
+            "detail": {
+                "title": "Milestone Record"
+            },
+            "createdOn": "Created On",
+            "notes": "Notes",
+            "studentProfile": "Student Profile",
+            "milestone": "Milestone"
+        }
+    }
+}

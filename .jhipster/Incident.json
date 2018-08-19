@@ -1,0 +1,56 @@
+{
+    "name": "Incident",
+    "fields": [
+        {
+            "fieldName": "natureOfIncident",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "firstAidProvided",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "firstAidNotes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "isAdminOnly",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "studentProfile",
+            "otherEntityName": "studentProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "students",
+            "otherEntityName": "student",
+            "otherEntityRelationshipName": "incident"
+        }
+    ],
+    "changelogDate": "20180819012427",
+    "entityTableName": "incident",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

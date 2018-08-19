@@ -1,0 +1,26 @@
+
+{
+    "testangularApp": {
+        "illnessRecord" : {
+            "home": {
+                "title": "IllnessRecords",
+                "createLabel": "Créer un nouveau Illness Record",
+                "createOrEditLabel": "Créer ou éditer un Illness Record"
+            },
+            "created": "Un nouveau Illness Record a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Illness Record avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Illness Record avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Illness Record {{ id }} ?"
+            },
+            "detail": {
+                "title": "Illness Record"
+            },
+            "createdOn": "Created On",
+            "name": "Name",
+            "description": "Description",
+            "isCured": "Is Cured",
+            "studentProfile": "Student Profile"
+        }
+    }
+}

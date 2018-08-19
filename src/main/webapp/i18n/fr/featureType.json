@@ -1,0 +1,9 @@
+{
+    "testangularApp": {
+        "FeatureType" : {
+            "null": "",
+            "STANDARD": "STANDARD",
+            "PREMIUM": "PREMIUM"
+        }
+    }
+}

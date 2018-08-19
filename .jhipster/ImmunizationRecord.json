@@ -1,0 +1,38 @@
+{
+    "name": "ImmunizationRecord",
+    "fields": [
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "vaccinationDoneOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "vaccinationName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isOnTime",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "studentProfile",
+            "otherEntityName": "studentProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819012430",
+    "entityTableName": "immunization_record",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

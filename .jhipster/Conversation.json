@@ -1,0 +1,53 @@
+{
+    "name": "Conversation",
+    "fields": [
+        {
+            "fieldName": "text",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sentOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fileUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mediaType",
+            "fieldType": "MediaType",
+            "fieldValues": "PHOTO,VIDEO"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "teacher",
+            "otherEntityName": "teacher",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "parent",
+            "otherEntityName": "parent",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819012439",
+    "entityTableName": "conversation",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

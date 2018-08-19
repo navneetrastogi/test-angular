@@ -1,0 +1,23 @@
+
+{
+    "testangularApp": {
+        "activityType" : {
+            "home": {
+                "title": "ActivityTypes",
+                "createLabel": "Créer un nouveau Activity Type",
+                "createOrEditLabel": "Créer ou éditer un Activity Type"
+            },
+            "created": "Un nouveau Activity Type a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Activity Type avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Activity Type avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Activity Type {{ id }} ?"
+            },
+            "detail": {
+                "title": "Activity Type"
+            },
+            "name": "Name",
+            "category": "Category"
+        }
+    }
+}
