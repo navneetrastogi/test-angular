@@ -1,0 +1,30 @@
+{
+    "name": "TaskType",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "priority",
+            "fieldType": "Integer"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tasks",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "taskType"
+        }
+    ],
+    "changelogDate": "20180819014842",
+    "entityTableName": "task_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

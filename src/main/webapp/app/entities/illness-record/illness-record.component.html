@@ -1,0 +1,66 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="testangularApp.illnessRecord.home.title">Illness Records</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-illness-record" [routerLink]="['/illness-record/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="testangularApp.illnessRecord.home.createLabel">
+            Create new Illness Record
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="illnessRecords">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="testangularApp.illnessRecord.createdOn">Created On</span></th>
+            <th><span jhiTranslate="testangularApp.illnessRecord.name">Name</span></th>
+            <th><span jhiTranslate="testangularApp.illnessRecord.description">Description</span></th>
+            <th><span jhiTranslate="testangularApp.illnessRecord.isCured">Is Cured</span></th>
+            <th><span jhiTranslate="testangularApp.illnessRecord.studentProfile">Student Profile</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let illnessRecord of illnessRecords ;trackBy: trackId">
+                <td><a [routerLink]="['/illness-record', illnessRecord.id, 'view' ]">{{illnessRecord.id}}</a></td>
+                <td>{{illnessRecord.createdOn | date:'mediumDate'}}</td>
+                <td>{{illnessRecord.name}}</td>
+                <td>{{illnessRecord.description}}</td>
+                <td>{{illnessRecord.isCured}}</td>
+                <td>
+                    <div *ngIf="illnessRecord.studentProfile">
+                        <a [routerLink]="['../student-profile', illnessRecord.studentProfile?.id, 'view' ]" >{{illnessRecord.studentProfile?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/illness-record', illnessRecord.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/illness-record', illnessRecord.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'illness-record/'+ illnessRecord.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

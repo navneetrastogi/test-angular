@@ -1,0 +1,9 @@
+{
+    "testangularApp": {
+        "IllumineMediaType" : {
+            "null": "",
+            "PHOTO": "PHOTO",
+            "VIDEO": "VIDEO"
+        }
+    }
+}

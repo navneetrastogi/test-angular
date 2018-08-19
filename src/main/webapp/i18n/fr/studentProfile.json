@@ -1,0 +1,35 @@
+
+{
+    "testangularApp": {
+        "studentProfile" : {
+            "home": {
+                "title": "StudentProfiles",
+                "createLabel": "Créer un nouveau Student Profile",
+                "createOrEditLabel": "Créer ou éditer un Student Profile"
+            },
+            "created": "Un nouveau Student Profile a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Student Profile avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Student Profile avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Student Profile {{ id }} ?"
+            },
+            "detail": {
+                "title": "Student Profile"
+            },
+            "dream": "Dream",
+            "birthDate": "Birth Date",
+            "bloodGroup": "Blood Group",
+            "gender": "Gender",
+            "immunizationRecords": "Immunization Records",
+            "illnessRecords": "Illness Records",
+            "payments": "Payments",
+            "kudosRecords": "Kudos Records",
+            "milestoneRecords": "Milestone Records",
+            "attendance": "Attendance",
+            "incidents": "Incidents",
+            "timelines": "Timelines",
+            "parents": "Parents",
+            "galleryItems": "Gallery Items"
+        }
+    }
+}
