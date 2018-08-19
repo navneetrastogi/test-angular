@@ -1,0 +1,58 @@
+{
+    "name": "Center",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastModifiedOn",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "organization",
+            "otherEntityName": "organization",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "rooms",
+            "otherEntityName": "room",
+            "otherEntityRelationshipName": "center"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "teachers",
+            "otherEntityName": "teacher",
+            "otherEntityRelationshipName": "center"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "students",
+            "otherEntityName": "student",
+            "otherEntityRelationshipName": "center"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "holidays",
+            "otherEntityName": "holiday",
+            "otherEntityRelationshipName": "center"
+        }
+    ],
+    "changelogDate": "20180819012411",
+    "entityTableName": "center",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

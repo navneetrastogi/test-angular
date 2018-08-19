@@ -1,0 +1,48 @@
+{
+    "name": "Schedule",
+    "fields": [
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastModifiedOn",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "rooms",
+            "otherEntityName": "room",
+            "otherEntityRelationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "events",
+            "otherEntityName": "event",
+            "otherEntityRelationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "activities",
+            "otherEntityName": "activity",
+            "otherEntityRelationshipName": "schedule"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "timelines",
+            "otherEntityName": "timeline",
+            "otherEntityRelationshipName": "schedule"
+        }
+    ],
+    "changelogDate": "20180819012413",
+    "entityTableName": "schedule",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

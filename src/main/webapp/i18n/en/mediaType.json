@@ -1,0 +1,9 @@
+{
+    "testangularApp": {
+        "MediaType" : {
+            "null": "",
+            "PHOTO": "PHOTO",
+            "VIDEO": "VIDEO"
+        }
+    }
+}

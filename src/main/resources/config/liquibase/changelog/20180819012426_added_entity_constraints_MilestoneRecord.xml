@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity MilestoneRecord.
+    -->
+    <changeSet id="20180819012426-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="student_profile_id"
+                                 baseTableName="milestone_record"
+                                 constraintName="fk_milestone_record_student_profile_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="student_profile"/>
+
+        <addForeignKeyConstraint baseColumnNames="milestone_id"
+                                 baseTableName="milestone_record"
+                                 constraintName="fk_milestone_record_milestone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="milestone"/>
+
+    </changeSet>
+</databaseChangeLog>

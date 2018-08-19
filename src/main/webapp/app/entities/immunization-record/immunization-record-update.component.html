@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-immunization-record-heading" jhiTranslate="testangularApp.immunizationRecord.home.createOrEditLabel">Create or edit a Immunization Record</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!immunizationRecord.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="immunizationRecord.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.immunizationRecord.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="immunizationRecord.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.immunizationRecord.vaccinationDoneOn" for="field_vaccinationDoneOn">Vaccination Done On</label>
+                    <div class="input-group">
+                        <input id="field_vaccinationDoneOn" type="text" class="form-control" name="vaccinationDoneOn" ngbDatepicker  #vaccinationDoneOnDp="ngbDatepicker" [(ngModel)]="immunizationRecord.vaccinationDoneOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="vaccinationDoneOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.immunizationRecord.vaccinationName" for="field_vaccinationName">Vaccination Name</label>
+                    <input type="text" class="form-control" name="vaccinationName" id="field_vaccinationName"
+                        [(ngModel)]="immunizationRecord.vaccinationName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.immunizationRecord.isOnTime" for="field_isOnTime">Is On Time</label>
+                    <input type="checkbox" class="form-control" name="isOnTime" id="field_isOnTime"
+                        [(ngModel)]="immunizationRecord.isOnTime" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.immunizationRecord.studentProfile" for="field_studentProfile">Student Profile</label>
+                    <select class="form-control" id="field_studentProfile" name="studentProfile" [(ngModel)]="immunizationRecord.studentProfile" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="studentProfileOption.id === immunizationRecord.studentProfile?.id ? immunizationRecord.studentProfile : studentProfileOption" *ngFor="let studentProfileOption of studentprofiles; trackBy: trackStudentProfileById">{{studentProfileOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

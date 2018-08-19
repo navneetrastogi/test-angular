@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="task">
+            <h2><span jhiTranslate="testangularApp.task.detail.title">Task</span> {{task.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.task.title">Title</span></dt>
+                <dd>
+                    <span>{{task.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.task.notes">Notes</span></dt>
+                <dd>
+                    <span>{{task.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.task.startDate">Start Date</span></dt>
+                <dd>
+                    <span>{{task.startDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.task.endDate">End Date</span></dt>
+                <dd>
+                    <span>{{task.endDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.task.reminderType">Reminder Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'testangularApp.ReminderType.' + task.reminderType}}">{{task.reminderType}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.task.room">Room</span></dt>
+                <dd>
+                    <div *ngIf="task.room">
+                        <a [routerLink]="['/room', task.room?.id, 'view']">{{task.room?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.task.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="task.parent">
+                        <a [routerLink]="['/parent', task.parent?.id, 'view']">{{task.parent?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.task.taskType">Task Type</span></dt>
+                <dd>
+                    <div *ngIf="task.taskType">
+                        <a [routerLink]="['/task-type', task.taskType?.id, 'view']">{{task.taskType?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/task', task.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

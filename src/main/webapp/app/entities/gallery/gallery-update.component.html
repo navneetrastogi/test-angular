@@ -1,0 +1,58 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-gallery-heading" jhiTranslate="testangularApp.gallery.home.createOrEditLabel">Create or edit a Gallery</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!gallery.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="gallery.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.gallery.mediaType" for="field_mediaType">Media Type</label>
+                    <select class="form-control" name="mediaType" [(ngModel)]="gallery.mediaType" id="field_mediaType" >
+                        <option value="PHOTO">{{'testangularApp.MediaType.PHOTO' | translate}}</option>
+                        <option value="VIDEO">{{'testangularApp.MediaType.VIDEO' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.gallery.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="gallery.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.gallery.fileUrl" for="field_fileUrl">File Url</label>
+                    <input type="text" class="form-control" name="fileUrl" id="field_fileUrl"
+                        [(ngModel)]="gallery.fileUrl" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.gallery.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="gallery.title" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.gallery.studentProfile" for="field_studentProfile">Student Profile</label>
+                    <select class="form-control" id="field_studentProfile" name="studentProfile" [(ngModel)]="gallery.studentProfile" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="studentProfileOption.id === gallery.studentProfile?.id ? gallery.studentProfile : studentProfileOption" *ngFor="let studentProfileOption of studentprofiles; trackBy: trackStudentProfileById">{{studentProfileOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

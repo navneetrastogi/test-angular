@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="video">
+            <h2><span jhiTranslate="testangularApp.video.detail.title">Video</span> {{video.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.video.uploadedDate">Uploaded Date</span></dt>
+                <dd>
+                    <span>{{video.uploadedDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.video.url">Url</span></dt>
+                <dd>
+                    <span>{{video.url}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.video.event">Event</span></dt>
+                <dd>
+                    <div *ngIf="video.event">
+                        <a [routerLink]="['/event', video.event?.id, 'view']">{{video.event?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.video.activity">Activity</span></dt>
+                <dd>
+                    <div *ngIf="video.activity">
+                        <a [routerLink]="['/activity', video.activity?.id, 'view']">{{video.activity?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/video', video.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

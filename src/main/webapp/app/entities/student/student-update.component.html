@@ -1,0 +1,77 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-student-heading" jhiTranslate="testangularApp.student.home.createOrEditLabel">Create or edit a Student</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!student.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="student.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.student.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="student.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.student.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="student.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.student.lastModifiedOn" for="field_lastModifiedOn">Last Modified On</label>
+                    <div class="input-group">
+                        <input id="field_lastModifiedOn" type="text" class="form-control" name="lastModifiedOn" ngbDatepicker  #lastModifiedOnDp="ngbDatepicker" [(ngModel)]="student.lastModifiedOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastModifiedOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.student.center" for="field_center">Center</label>
+                    <select class="form-control" id="field_center" name="center" [(ngModel)]="student.center" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="centerOption.id === student.center?.id ? student.center : centerOption" *ngFor="let centerOption of centers; trackBy: trackCenterById">{{centerOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.student.room" for="field_room">Room</label>
+                    <select class="form-control" id="field_room" name="room" [(ngModel)]="student.room" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="roomOption.id === student.room?.id ? student.room : roomOption" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.student.studentProfile" for="field_studentProfile">Student Profile</label>
+                    <select class="form-control" id="field_studentProfile" name="studentProfile" [(ngModel)]="student.studentProfile">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="studentProfileOption.id === student.studentProfile?.id ? student.studentProfile : studentProfileOption" *ngFor="let studentProfileOption of studentprofiles; trackBy: trackStudentProfileById">{{studentProfileOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.student.incident" for="field_incident">Incident</label>
+                    <select class="form-control" id="field_incident" name="incident" [(ngModel)]="student.incident" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="incidentOption.id === student.incident?.id ? student.incident : incidentOption" *ngFor="let incidentOption of incidents; trackBy: trackIncidentById">{{incidentOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

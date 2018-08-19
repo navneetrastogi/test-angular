@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="timeline">
+            <h2><span jhiTranslate="testangularApp.timeline.detail.title">Timeline</span> {{timeline.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.timeline.date">Date</span></dt>
+                <dd>
+                    <span>{{timeline.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.timeline.isVisible">Is Visible</span></dt>
+                <dd>
+                    <span>{{timeline.isVisible}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.timeline.schedule">Schedule</span></dt>
+                <dd>
+                    <div *ngIf="timeline.schedule">
+                        <a [routerLink]="['/schedule', timeline.schedule?.id, 'view']">{{timeline.schedule?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.timeline.studentProfile">Student Profile</span></dt>
+                <dd>
+                    <div *ngIf="timeline.studentProfile">
+                        <a [routerLink]="['/student-profile', timeline.studentProfile?.id, 'view']">{{timeline.studentProfile?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/timeline', timeline.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
