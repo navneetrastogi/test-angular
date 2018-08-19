@@ -1,0 +1,81 @@
+{
+    "name": "Parent",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "relation",
+            "fieldType": "Relation",
+            "fieldValues": "FATHER,MOTHER,GUARDIAN"
+        },
+        {
+            "fieldName": "studentName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "isAccountActive",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "email",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "studentProfile",
+            "otherEntityName": "studentProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "features",
+            "otherEntityName": "feature",
+            "otherEntityRelationshipName": "parent"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "notifications",
+            "otherEntityName": "notification",
+            "otherEntityRelationshipName": "parent"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "tasks",
+            "otherEntityName": "task",
+            "otherEntityRelationshipName": "parent"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "permissions",
+            "otherEntityName": "permission",
+            "otherEntityRelationshipName": "parent"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conversation",
+            "otherEntityName": "conversation",
+            "otherEntityRelationshipName": "parent"
+        }
+    ],
+    "changelogDate": "20180819014837",
+    "entityTableName": "parent",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

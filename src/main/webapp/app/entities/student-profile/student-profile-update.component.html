@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-student-profile-heading" jhiTranslate="testangularApp.studentProfile.home.createOrEditLabel">Create or edit a Student Profile</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!studentProfile.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="studentProfile.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.studentProfile.dream" for="field_dream">Dream</label>
+                    <input type="text" class="form-control" name="dream" id="field_dream"
+                        [(ngModel)]="studentProfile.dream" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.studentProfile.birthDate" for="field_birthDate">Birth Date</label>
+                    <div class="input-group">
+                        <input id="field_birthDate" type="text" class="form-control" name="birthDate" ngbDatepicker  #birthDateDp="ngbDatepicker" [(ngModel)]="studentProfile.birthDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="birthDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.studentProfile.bloodGroup" for="field_bloodGroup">Blood Group</label>
+                    <input type="text" class="form-control" name="bloodGroup" id="field_bloodGroup"
+                        [(ngModel)]="studentProfile.bloodGroup" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.studentProfile.gender" for="field_gender">Gender</label>
+                    <select class="form-control" name="gender" [(ngModel)]="studentProfile.gender" id="field_gender" >
+                        <option value="MALE">{{'testangularApp.Gender.MALE' | translate}}</option>
+                        <option value="FEMALE">{{'testangularApp.Gender.FEMALE' | translate}}</option>
+                    </select>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

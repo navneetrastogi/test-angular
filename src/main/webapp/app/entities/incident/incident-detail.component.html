@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="incident">
+            <h2><span jhiTranslate="testangularApp.incident.detail.title">Incident</span> {{incident.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.incident.natureOfIncident">Nature Of Incident</span></dt>
+                <dd>
+                    <span>{{incident.natureOfIncident}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.incident.firstAidProvided">First Aid Provided</span></dt>
+                <dd>
+                    <span>{{incident.firstAidProvided}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.incident.firstAidNotes">First Aid Notes</span></dt>
+                <dd>
+                    <span>{{incident.firstAidNotes}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.incident.date">Date</span></dt>
+                <dd>
+                    <span>{{incident.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.incident.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{incident.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.incident.isAdminOnly">Is Admin Only</span></dt>
+                <dd>
+                    <span>{{incident.isAdminOnly}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.incident.notes">Notes</span></dt>
+                <dd>
+                    <span>{{incident.notes}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.incident.studentProfile">Student Profile</span></dt>
+                <dd>
+                    <div *ngIf="incident.studentProfile">
+                        <a [routerLink]="['/student-profile', incident.studentProfile?.id, 'view']">{{incident.studentProfile?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/incident', incident.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

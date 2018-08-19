@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-parent-heading" jhiTranslate="testangularApp.parent.home.createOrEditLabel">Create or edit a Parent</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!parent.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="parent.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="parent.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="parent.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.phoneNumber" for="field_phoneNumber">Phone Number</label>
+                    <input type="text" class="form-control" name="phoneNumber" id="field_phoneNumber"
+                        [(ngModel)]="parent.phoneNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.relation" for="field_relation">Relation</label>
+                    <select class="form-control" name="relation" [(ngModel)]="parent.relation" id="field_relation" >
+                        <option value="FATHER">{{'testangularApp.Relation.FATHER' | translate}}</option>
+                        <option value="MOTHER">{{'testangularApp.Relation.MOTHER' | translate}}</option>
+                        <option value="GUARDIAN">{{'testangularApp.Relation.GUARDIAN' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.studentName" for="field_studentName">Student Name</label>
+                    <input type="text" class="form-control" name="studentName" id="field_studentName"
+                        [(ngModel)]="parent.studentName" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.isAccountActive" for="field_isAccountActive">Is Account Active</label>
+                    <input type="checkbox" class="form-control" name="isAccountActive" id="field_isAccountActive"
+                        [(ngModel)]="parent.isAccountActive" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.email" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                        [(ngModel)]="parent.email" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.parent.studentProfile" for="field_studentProfile">Student Profile</label>
+                    <select class="form-control" id="field_studentProfile" name="studentProfile" [(ngModel)]="parent.studentProfile" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="studentProfileOption.id === parent.studentProfile?.id ? parent.studentProfile : studentProfileOption" *ngFor="let studentProfileOption of studentprofiles; trackBy: trackStudentProfileById">{{studentProfileOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

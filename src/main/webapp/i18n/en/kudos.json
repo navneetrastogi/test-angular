@@ -1,0 +1,27 @@
+
+{
+    "testangularApp": {
+        "kudos" : {
+            "home": {
+                "title": "Kudos",
+                "createLabel": "Create a new Kudos",
+                "createOrEditLabel": "Create or edit a Kudos"
+            },
+            "created": "A new Kudos is created with identifier {{ param }}",
+            "updated": "A Kudos is updated with identifier {{ param }}",
+            "deleted": "A Kudos is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Kudos {{ id }}?"
+            },
+            "detail": {
+                "title": "Kudos"
+            },
+            "title": "Title",
+            "description": "Description",
+            "imageUrl": "Image Url",
+            "createdOn": "Created On",
+            "lastModifiedOn": "Last Modified On",
+            "kudosRecords": "Kudos Records"
+        }
+    }
+}

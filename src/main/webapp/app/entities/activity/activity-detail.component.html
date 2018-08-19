@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="activity">
+            <h2><span jhiTranslate="testangularApp.activity.detail.title">Activity</span> {{activity.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.activity.title">Title</span></dt>
+                <dd>
+                    <span>{{activity.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.activity.description">Description</span></dt>
+                <dd>
+                    <span>{{activity.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.activity.activityImageUrl">Activity Image Url</span></dt>
+                <dd>
+                    <span>{{activity.activityImageUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.activity.activityDate">Activity Date</span></dt>
+                <dd>
+                    <span>{{activity.activityDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.activity.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{activity.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.activity.lastModifiedOn">Last Modified On</span></dt>
+                <dd>
+                    <span>{{activity.lastModifiedOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.activity.schedule">Schedule</span></dt>
+                <dd>
+                    <div *ngIf="activity.schedule">
+                        <a [routerLink]="['/schedule', activity.schedule?.id, 'view']">{{activity.schedule?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.activity.activityType">Activity Type</span></dt>
+                <dd>
+                    <div *ngIf="activity.activityType">
+                        <a [routerLink]="['/activity-type', activity.activityType?.id, 'view']">{{activity.activityType?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/activity', activity.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

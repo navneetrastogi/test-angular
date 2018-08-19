@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="conversation">
+            <h2><span jhiTranslate="testangularApp.conversation.detail.title">Conversation</span> {{conversation.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.conversation.text">Text</span></dt>
+                <dd>
+                    <span>{{conversation.text}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.conversation.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{conversation.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.conversation.sentOn">Sent On</span></dt>
+                <dd>
+                    <span>{{conversation.sentOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.conversation.status">Status</span></dt>
+                <dd>
+                    <span>{{conversation.status}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.conversation.fileUrl">File Url</span></dt>
+                <dd>
+                    <span>{{conversation.fileUrl}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.conversation.mediaType">Media Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'testangularApp.IllumineMediaType.' + conversation.mediaType}}">{{conversation.mediaType}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.conversation.teacher">Teacher</span></dt>
+                <dd>
+                    <div *ngIf="conversation.teacher">
+                        <a [routerLink]="['/teacher', conversation.teacher?.id, 'view']">{{conversation.teacher?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.conversation.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="conversation.parent">
+                        <a [routerLink]="['/parent', conversation.parent?.id, 'view']">{{conversation.parent?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/conversation', conversation.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="testangularApp.conversation.home.title">Conversations</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-conversation" [routerLink]="['/conversation/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="testangularApp.conversation.home.createLabel">
+            Create new Conversation
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="conversations">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.text">Text</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.createdOn">Created On</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.sentOn">Sent On</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.status">Status</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.fileUrl">File Url</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.mediaType">Media Type</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.teacher">Teacher</span></th>
+            <th><span jhiTranslate="testangularApp.conversation.parent">Parent</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let conversation of conversations ;trackBy: trackId">
+                <td><a [routerLink]="['/conversation', conversation.id, 'view' ]">{{conversation.id}}</a></td>
+                <td>{{conversation.text}}</td>
+                <td>{{conversation.createdOn | date:'mediumDate'}}</td>
+                <td>{{conversation.sentOn | date:'mediumDate'}}</td>
+                <td>{{conversation.status}}</td>
+                <td>{{conversation.fileUrl}}</td>
+                <td jhiTranslate="{{'testangularApp.IllumineMediaType.' + conversation.mediaType}}">{{conversation.mediaType}}</td>
+                <td>
+                    <div *ngIf="conversation.teacher">
+                        <a [routerLink]="['../teacher', conversation.teacher?.id, 'view' ]" >{{conversation.teacher?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="conversation.parent">
+                        <a [routerLink]="['../parent', conversation.parent?.id, 'view' ]" >{{conversation.parent?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/conversation', conversation.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/conversation', conversation.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'conversation/'+ conversation.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

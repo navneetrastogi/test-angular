@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="room">
+            <h2><span jhiTranslate="testangularApp.room.detail.title">Room</span> {{room.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.room.name">Name</span></dt>
+                <dd>
+                    <span>{{room.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.room.capacity">Capacity</span></dt>
+                <dd>
+                    <span>{{room.capacity}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.room.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{room.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.room.lastModifiedOn">Last Modified On</span></dt>
+                <dd>
+                    <span>{{room.lastModifiedOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.room.center">Center</span></dt>
+                <dd>
+                    <div *ngIf="room.center">
+                        <a [routerLink]="['/center', room.center?.id, 'view']">{{room.center?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.room.schedule">Schedule</span></dt>
+                <dd>
+                    <div *ngIf="room.schedule">
+                        <a [routerLink]="['/schedule', room.schedule?.id, 'view']">{{room.schedule?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/room', room.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

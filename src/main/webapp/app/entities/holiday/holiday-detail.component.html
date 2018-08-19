@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="holiday">
+            <h2><span jhiTranslate="testangularApp.holiday.detail.title">Holiday</span> {{holiday.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.holiday.date">Date</span></dt>
+                <dd>
+                    <span>{{holiday.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.holiday.title">Title</span></dt>
+                <dd>
+                    <span>{{holiday.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.holiday.description">Description</span></dt>
+                <dd>
+                    <span>{{holiday.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.holiday.center">Center</span></dt>
+                <dd>
+                    <div *ngIf="holiday.center">
+                        <a [routerLink]="['/center', holiday.center?.id, 'view']">{{holiday.center?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/holiday', holiday.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>
