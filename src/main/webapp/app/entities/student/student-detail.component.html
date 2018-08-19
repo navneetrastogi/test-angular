@@ -1,0 +1,59 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="student">
+            <h2><span jhiTranslate="testangularApp.student.detail.title">Student</span> {{student.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.student.name">Name</span></dt>
+                <dd>
+                    <span>{{student.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.student.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{student.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.student.lastModifiedOn">Last Modified On</span></dt>
+                <dd>
+                    <span>{{student.lastModifiedOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.student.center">Center</span></dt>
+                <dd>
+                    <div *ngIf="student.center">
+                        <a [routerLink]="['/center', student.center?.id, 'view']">{{student.center?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.student.room">Room</span></dt>
+                <dd>
+                    <div *ngIf="student.room">
+                        <a [routerLink]="['/room', student.room?.id, 'view']">{{student.room?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.student.studentProfile">Student Profile</span></dt>
+                <dd>
+                    <div *ngIf="student.studentProfile">
+                        <a [routerLink]="['/student-profile', student.studentProfile?.id, 'view']">{{student.studentProfile?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.student.incident">Incident</span></dt>
+                <dd>
+                    <div *ngIf="student.incident">
+                        <a [routerLink]="['/incident', student.incident?.id, 'view']">{{student.incident?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/student', student.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

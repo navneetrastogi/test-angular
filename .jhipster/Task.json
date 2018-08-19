@@ -1,0 +1,55 @@
+{
+    "name": "Task",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "startDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "endDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "reminderType",
+            "fieldType": "ReminderType",
+            "fieldValues": "HOURLY,DAILY,WEEKLY,MONTHLY"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "room",
+            "otherEntityName": "room",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "parent",
+            "otherEntityName": "parent",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "taskType",
+            "otherEntityName": "taskType",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819012639",
+    "entityTableName": "task",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

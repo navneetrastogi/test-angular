@@ -1,0 +1,39 @@
+{
+    "name": "Gallery",
+    "fields": [
+        {
+            "fieldName": "mediaType",
+            "fieldType": "MediaType",
+            "fieldValues": "PHOTO,VIDEO"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "fileUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "studentProfile",
+            "otherEntityName": "studentProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819012630",
+    "entityTableName": "gallery",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

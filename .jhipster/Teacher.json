@@ -1,0 +1,53 @@
+{
+    "name": "Teacher",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "contactNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gender",
+            "fieldType": "Gender",
+            "fieldValues": "MALE,FEMALE"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "joiningDate",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "center",
+            "otherEntityName": "center",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "conversation",
+            "otherEntityName": "conversation",
+            "otherEntityRelationshipName": "teacher"
+        }
+    ],
+    "changelogDate": "20180819012623",
+    "entityTableName": "teacher",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,34 @@
+{
+    "name": "Holiday",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "center",
+            "otherEntityName": "center",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819012624",
+    "entityTableName": "holiday",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

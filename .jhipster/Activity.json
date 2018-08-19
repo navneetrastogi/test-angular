@@ -1,0 +1,66 @@
+{
+    "name": "Activity",
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activityImageUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "activityDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "lastModifiedOn",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "schedule",
+            "otherEntityName": "schedule",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "activityType",
+            "otherEntityName": "activityType",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "photos",
+            "otherEntityName": "photo",
+            "otherEntityRelationshipName": "activity"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "videos",
+            "otherEntityName": "video",
+            "otherEntityRelationshipName": "activity"
+        }
+    ],
+    "changelogDate": "20180819012617",
+    "entityTableName": "activity",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,29 @@
+
+{
+    "testangularApp": {
+        "center" : {
+            "home": {
+                "title": "Centers",
+                "createLabel": "Créer un nouveau Center",
+                "createOrEditLabel": "Créer ou éditer un Center"
+            },
+            "created": "Un nouveau Center a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Center avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Center avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Center {{ id }} ?"
+            },
+            "detail": {
+                "title": "Center"
+            },
+            "name": "Name",
+            "createdOn": "Created On",
+            "lastModifiedOn": "Last Modified On",
+            "organization": "Organization",
+            "rooms": "Rooms",
+            "teachers": "Teachers",
+            "students": "Students",
+            "holidays": "Holidays"
+        }
+    }
+}

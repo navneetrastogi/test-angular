@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-notification-heading" jhiTranslate="testangularApp.notification.home.createOrEditLabel">Create or edit a Notification</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!notification.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="notification.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.notification.type" for="field_type">Type</label>
+                    <input type="text" class="form-control" name="type" id="field_type"
+                        [(ngModel)]="notification.type" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.notification.date" for="field_date">Date</label>
+                    <div class="input-group">
+                        <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="notification.date"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.notification.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="notification.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.notification.message" for="field_message">Message</label>
+                    <input type="text" class="form-control" name="message" id="field_message"
+                        [(ngModel)]="notification.message" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.notification.icon" for="field_icon">Icon</label>
+                    <input type="text" class="form-control" name="icon" id="field_icon"
+                        [(ngModel)]="notification.icon" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.notification.status" for="field_status">Status</label>
+                    <select class="form-control" name="status" [(ngModel)]="notification.status" id="field_status" >
+                        <option value="PENDING">{{'testangularApp.NotificationStatus.PENDING' | translate}}</option>
+                        <option value="DELIVERED">{{'testangularApp.NotificationStatus.DELIVERED' | translate}}</option>
+                        <option value="READ">{{'testangularApp.NotificationStatus.READ' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.notification.parent" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="notification.parent" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parentOption.id === notification.parent?.id ? notification.parent : parentOption" *ngFor="let parentOption of parents; trackBy: trackParentById">{{parentOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

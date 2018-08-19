@@ -1,0 +1,36 @@
+{
+    "name": "Video",
+    "fields": [
+        {
+            "fieldName": "uploadedDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "url",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "event",
+            "otherEntityName": "event",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "activity",
+            "otherEntityName": "activity",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819012620",
+    "entityTableName": "video",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

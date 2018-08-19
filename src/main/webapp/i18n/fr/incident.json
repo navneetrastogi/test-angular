@@ -1,0 +1,30 @@
+
+{
+    "testangularApp": {
+        "incident" : {
+            "home": {
+                "title": "Incidents",
+                "createLabel": "Créer un nouveau Incident",
+                "createOrEditLabel": "Créer ou éditer un Incident"
+            },
+            "created": "Un nouveau Incident a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Incident avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Incident avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Incident {{ id }} ?"
+            },
+            "detail": {
+                "title": "Incident"
+            },
+            "natureOfIncident": "Nature Of Incident",
+            "firstAidProvided": "First Aid Provided",
+            "firstAidNotes": "First Aid Notes",
+            "date": "Date",
+            "createdOn": "Created On",
+            "isAdminOnly": "Is Admin Only",
+            "notes": "Notes",
+            "studentProfile": "Student Profile",
+            "students": "Students"
+        }
+    }
+}

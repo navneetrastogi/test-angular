@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="event">
+            <h2><span jhiTranslate="testangularApp.event.detail.title">Event</span> {{event.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.event.title">Title</span></dt>
+                <dd>
+                    <span>{{event.title}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.event.description">Description</span></dt>
+                <dd>
+                    <span>{{event.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.event.eventImageURL">Event Image URL</span></dt>
+                <dd>
+                    <span>{{event.eventImageURL}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.event.eventDate">Event Date</span></dt>
+                <dd>
+                    <span>{{event.eventDate}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.event.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{event.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.event.lastModifiedOn">Last Modified On</span></dt>
+                <dd>
+                    <span>{{event.lastModifiedOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.event.schedule">Schedule</span></dt>
+                <dd>
+                    <div *ngIf="event.schedule">
+                        <a [routerLink]="['/schedule', event.schedule?.id, 'view']">{{event.schedule?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/event', event.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

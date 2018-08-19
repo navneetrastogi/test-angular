@@ -1,0 +1,36 @@
+{
+    "name": "MilestoneRecord",
+    "fields": [
+        {
+            "fieldName": "createdOn",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "notes",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "studentProfile",
+            "otherEntityName": "studentProfile",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "milestone",
+            "otherEntityName": "milestone",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180819012628",
+    "entityTableName": "milestone_record",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
