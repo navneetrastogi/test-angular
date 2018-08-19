@@ -1,0 +1,66 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="testangularApp.gallery.home.title">Galleries</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-gallery" [routerLink]="['/gallery/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="testangularApp.gallery.home.createLabel">
+            Create new Gallery
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="galleries">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="testangularApp.gallery.mediaType">Media Type</span></th>
+            <th><span jhiTranslate="testangularApp.gallery.createdOn">Created On</span></th>
+            <th><span jhiTranslate="testangularApp.gallery.fileUrl">File Url</span></th>
+            <th><span jhiTranslate="testangularApp.gallery.title">Title</span></th>
+            <th><span jhiTranslate="testangularApp.gallery.studentProfile">Student Profile</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let gallery of galleries ;trackBy: trackId">
+                <td><a [routerLink]="['/gallery', gallery.id, 'view' ]">{{gallery.id}}</a></td>
+                <td jhiTranslate="{{'testangularApp.MediaType.' + gallery.mediaType}}">{{gallery.mediaType}}</td>
+                <td>{{gallery.createdOn | date:'mediumDate'}}</td>
+                <td>{{gallery.fileUrl}}</td>
+                <td>{{gallery.title}}</td>
+                <td>
+                    <div *ngIf="gallery.studentProfile">
+                        <a [routerLink]="['../student-profile', gallery.studentProfile?.id, 'view' ]" >{{gallery.studentProfile?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/gallery', gallery.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/gallery', gallery.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'gallery/'+ gallery.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

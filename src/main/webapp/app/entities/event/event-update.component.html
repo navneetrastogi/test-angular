@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-event-heading" jhiTranslate="testangularApp.event.home.createOrEditLabel">Create or edit a Event</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!event.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="event.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.event.title" for="field_title">Title</label>
+                    <input type="text" class="form-control" name="title" id="field_title"
+                        [(ngModel)]="event.title" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.event.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="event.description" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.event.eventImageURL" for="field_eventImageURL">Event Image URL</label>
+                    <input type="text" class="form-control" name="eventImageURL" id="field_eventImageURL"
+                        [(ngModel)]="event.eventImageURL" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.event.eventDate" for="field_eventDate">Event Date</label>
+                    <div class="input-group">
+                        <input id="field_eventDate" type="text" class="form-control" name="eventDate" ngbDatepicker  #eventDateDp="ngbDatepicker" [(ngModel)]="event.eventDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="eventDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.event.createdOn" for="field_createdOn">Created On</label>
+                    <div class="input-group">
+                        <input id="field_createdOn" type="text" class="form-control" name="createdOn" ngbDatepicker  #createdOnDp="ngbDatepicker" [(ngModel)]="event.createdOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="createdOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.event.lastModifiedOn" for="field_lastModifiedOn">Last Modified On</label>
+                    <div class="input-group">
+                        <input id="field_lastModifiedOn" type="text" class="form-control" name="lastModifiedOn" ngbDatepicker  #lastModifiedOnDp="ngbDatepicker" [(ngModel)]="event.lastModifiedOn"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="lastModifiedOnDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="testangularApp.event.schedule" for="field_schedule">Schedule</label>
+                    <select class="form-control" id="field_schedule" name="schedule" [(ngModel)]="event.schedule" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="scheduleOption.id === event.schedule?.id ? event.schedule : scheduleOption" *ngFor="let scheduleOption of schedules; trackBy: trackScheduleById">{{scheduleOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

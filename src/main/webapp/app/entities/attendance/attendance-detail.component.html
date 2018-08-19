@@ -1,0 +1,41 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="attendance">
+            <h2><span jhiTranslate="testangularApp.attendance.detail.title">Attendance</span> {{attendance.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="testangularApp.attendance.attendanceEvent">Attendance Event</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'testangularApp.AttendanceEvent.' + attendance.attendanceEvent}}">{{attendance.attendanceEvent}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.attendance.datetime">Datetime</span></dt>
+                <dd>
+                    <span>{{attendance.datetime}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.attendance.createdOn">Created On</span></dt>
+                <dd>
+                    <span>{{attendance.createdOn}}</span>
+                </dd>
+                <dt><span jhiTranslate="testangularApp.attendance.studentProfile">Student Profile</span></dt>
+                <dd>
+                    <div *ngIf="attendance.studentProfile">
+                        <a [routerLink]="['/student-profile', attendance.studentProfile?.id, 'view']">{{attendance.studentProfile?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/attendance', attendance.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

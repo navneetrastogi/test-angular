@@ -1,0 +1,60 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="testangularApp.studentProfile.home.title">Student Profiles</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-student-profile" [routerLink]="['/student-profile/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="testangularApp.studentProfile.home.createLabel">
+            Create new Student Profile
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="studentProfiles">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="testangularApp.studentProfile.dream">Dream</span></th>
+            <th><span jhiTranslate="testangularApp.studentProfile.birthDate">Birth Date</span></th>
+            <th><span jhiTranslate="testangularApp.studentProfile.bloodGroup">Blood Group</span></th>
+            <th><span jhiTranslate="testangularApp.studentProfile.gender">Gender</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let studentProfile of studentProfiles ;trackBy: trackId">
+                <td><a [routerLink]="['/student-profile', studentProfile.id, 'view' ]">{{studentProfile.id}}</a></td>
+                <td>{{studentProfile.dream}}</td>
+                <td>{{studentProfile.birthDate | date:'mediumDate'}}</td>
+                <td>{{studentProfile.bloodGroup}}</td>
+                <td jhiTranslate="{{'testangularApp.Gender.' + studentProfile.gender}}">{{studentProfile.gender}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/student-profile', studentProfile.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/student-profile', studentProfile.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'student-profile/'+ studentProfile.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

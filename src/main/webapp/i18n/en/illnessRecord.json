@@ -1,0 +1,26 @@
+
+{
+    "testangularApp": {
+        "illnessRecord" : {
+            "home": {
+                "title": "Illness Records",
+                "createLabel": "Create a new Illness Record",
+                "createOrEditLabel": "Create or edit a Illness Record"
+            },
+            "created": "A new Illness Record is created with identifier {{ param }}",
+            "updated": "A Illness Record is updated with identifier {{ param }}",
+            "deleted": "A Illness Record is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Illness Record {{ id }}?"
+            },
+            "detail": {
+                "title": "Illness Record"
+            },
+            "createdOn": "Created On",
+            "name": "Name",
+            "description": "Description",
+            "isCured": "Is Cured",
+            "studentProfile": "Student Profile"
+        }
+    }
+}

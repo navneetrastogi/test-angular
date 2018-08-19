@@ -1,0 +1,27 @@
+
+{
+    "testangularApp": {
+        "schedule" : {
+            "home": {
+                "title": "Schedules",
+                "createLabel": "Créer un nouveau Schedule",
+                "createOrEditLabel": "Créer ou éditer un Schedule"
+            },
+            "created": "Un nouveau Schedule a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Schedule avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Schedule avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Schedule {{ id }} ?"
+            },
+            "detail": {
+                "title": "Schedule"
+            },
+            "createdOn": "Created On",
+            "lastModifiedOn": "Last Modified On",
+            "rooms": "Rooms",
+            "events": "Events",
+            "activities": "Activities",
+            "timelines": "Timelines"
+        }
+    }
+}
